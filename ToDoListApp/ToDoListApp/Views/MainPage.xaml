@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ToDoListApp.Views.MainPage"
+             Title="Todo Application">
+    <StackLayout>
+        <Button
+            Text="Add New Todo"
+            Command="{Binding AddToDoItemCommand}"/>
+
+
+        <StackLayout>
+
+            <ListView                 
+                x:Name="listView" 
+                RefreshCommand="{Binding RefreshListViewCommand}"
+                IsRefreshing="{Binding IsListViewRefreshing}"
+                SeparatorColor="Purple"        
+                ItemsSource="{Binding ToDoItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout                         
+                                Orientation="Horizontal" 
+                                HorizontalOptions="FillAndExpand">
+                               
+
+                                <Label 
+                                    Text="{Binding Title}" 
+                                    Font="Palatino"
+                                    FontAttributes="Italic"
+                                    FontSize="Medium"                               
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="StartAndExpand">
+                                    
+                                </Label>
+                                <Label Text="{Binding Date}"/>
+
+
+                            </StackLayout>
+
+                           
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+        </StackLayout>
+    </StackLayout>
+  
+</ContentPage>
